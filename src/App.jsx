@@ -72,73 +72,73 @@ function App() {
 
   return (
     <div className="App">
-    <div className="weather">
-      {!loading ? (
-        <>
-          <form onSubmit={handleSubmitSearch}>
-            <input
-              className="input"
-              variant="filled"
-              placeholder="Введите город"
-              error={error}
-              value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
-              onKeyDown={handleSearch}
-            />
-            <button className="button1">Найти город</button>
-          </form>
+      <div className="weather">
+        {!loading ? (
+          <>
+            <form className="form" onSubmit={handleSubmitSearch}>
+              <input
+                className="input"
+                variant="filled"
+                placeholder="Введите город"
+                error={error}
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
+                onKeyDown={handleSearch}
+              />
+              <button className="button1">Найти город</button>
+            </form>
 
-          <h1 className="city">{data.name}</h1>
-          <div className="group">
-            <img
-              src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} 
-              alt=""
-            />
-            <h1>{data.weather[0].main}</h1>
-          </div>
-
-          <h1 className="temp">{data.main.temp.toFixed()} °C</h1>
-
-          <Slide direction="right" timeout={800} in={!loading}>
-            <div className="box_container">
-              <div className="box">
-                <p>Влажность</p>
-                <h1>{data.main.humidity.toFixed()}%</h1>
-              </div>
-
-              <div className="box">
-                <p>Ветер</p>
-                <h1>{data.wind.speed.toFixed()} km/h</h1>
-              </div>
-
-              <div className="box">
-                <p>Ощущается как</p>
-                <h1>{data.main.feels_like.toFixed()} °C</h1>
-              </div>
+            <h1 className="city">{data.name}</h1>
+            <div className="group">
+              <img
+                src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+                alt=""
+              />
+              <h1>{data.weather[0].main}</h1>
             </div>
-          </Slide>
-        </>
-      
-      ) : (
-        <CircularProgress />
-      )}
+
+            <h1 className="temp">{data.main.temp.toFixed()} °C</h1>
+
+            <Slide direction="right" timeout={800} in={!loading}>
+              <div className="box_container">
+                <div className="box">
+                  <p>Влажность</p>
+                  <h1>{data.main.humidity.toFixed()}%</h1>
+                </div>
+
+                <div className="box">
+                  <p>Ветер</p>
+                  <h1>{data.wind.speed.toFixed()} km/h</h1>
+                </div>
+
+                <div className="box">
+                  <p>Ощущается как</p>
+                  <h1>{data.main.feels_like.toFixed()} °C</h1>
+                </div>
+              </div>
+            </Slide>
+          </>
+        ) : (
+          <CircularProgress />
+        )}
       </div>
-      <div className="todo">
-      <p>Список задач: {todos.length}</p>
-      <ToDoForm addTask={addTask} />
-      {todos.map((todo) => {
-        return (
-          <ToDo
-            todo={todo}
-            key={todo.id}
-            toggleTask={handleToggle}
-            removeTask={removeTask}
-          />
-        );
-      })}
+      <div className="box_container">
+        <div className="todo">
+          <p>Список задач: {todos.length}</p>
+          <ToDoForm addTask={addTask} />
+          {todos.map((todo) => {
+            return (
+              <ToDo
+                todo={todo}
+                key={todo.id}
+                toggleTask={handleToggle}
+                removeTask={removeTask}
+              />
+            );
+          })}
+        </div>
       </div>
-      </div>
-    // </div>
+    </div>
   );
 }
 

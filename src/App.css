@@ -167,7 +167,15 @@ body {
   transform: scale(1.1);
 }
 
-@media only screen and (max-width: 730px) {
+@media only screen and (max-width: 1020px) {
+  .App {
+    flex-direction: column;
+  }
+  .weather .form{
+    padding-top: 30px;
+    display: grid;
+  }
+
   .bg_img {
     padding: 2rem 0;
   }
