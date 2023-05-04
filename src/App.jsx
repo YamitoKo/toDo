@@ -42,7 +42,7 @@ function App() {
           error && setError(false);
           return res.json();
         } else {
-          throw new Error("Something went wrong");
+          throw new Error("Что-то пошло не так");
         }
       })
       .then((data) => {
@@ -108,7 +108,7 @@ function App() {
 
                 <div className="box">
                   <p>Ветер</p>
-                  <h1>{data.wind.speed.toFixed()} km/h</h1>
+                  <h1>{data.wind.speed.toFixed()} км/ч</h1>
                 </div>
 
                 <div className="box">
